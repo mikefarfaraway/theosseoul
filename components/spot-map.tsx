@@ -7,7 +7,8 @@ type SpotMapProps = {
   spots: Spot[];
 };
 
-const MY_MAPS_PUBLIC_URL = "https://www.google.com/maps/d/u/0/edit?mid=1Ile6fS2J4iviMrr4EZyDchZsljE81sw&usp=sharing";
+export const MY_MAPS_PUBLIC_URL =
+  "https://www.google.com/maps/d/u/0/edit?mid=1Ile6fS2J4iviMrr4EZyDchZsljE81sw&usp=sharing";
 
 export function SpotMap({ spots }: SpotMapProps) {
   return (

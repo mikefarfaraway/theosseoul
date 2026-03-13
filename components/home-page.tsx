@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { HomepageData } from "@/types/content";
 import { Hero } from "@/components/hero";
-import { SpotMap } from "@/components/spot-map";
+import { MY_MAPS_PUBLIC_URL, SpotMap } from "@/components/spot-map";
 import { SpotCard } from "@/components/spot-card";
 import { SpotDetailSheet } from "@/components/spot-detail-sheet";
 
@@ -16,6 +16,8 @@ export function HomePage({ data }: HomePageProps) {
   const [selectedSpotId, setSelectedSpotId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [activeSubcategory, setActiveSubcategory] = useState<string>("All");
+  const [showFloatingMapCta, setShowFloatingMapCta] = useState(false);
+  const mapSectionRef = useRef<HTMLElement | null>(null);
 
   const selectedSpot = data.allSpots.find((spot) => spot.id === selectedSpotId) ?? null;
   const relatedSpots = selectedSpot ? data.relatedBySpotId[selectedSpot.id] ?? [] : [];
@@ -50,6 +52,28 @@ export function HomePage({ data }: HomePageProps) {
       }),
     [activeCategory, activeSubcategory, browseableSpots],
   );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const mapSection = mapSectionRef.current;
+
+      if (!mapSection) {
+        return;
+      }
+
+      const rect = mapSection.getBoundingClientRect();
+      setShowFloatingMapCta(rect.bottom < 120);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   return (
     <main className="pb-12">
@@ -90,7 +114,7 @@ export function HomePage({ data }: HomePageProps) {
         </motion.div>
       </section>
 
-      <section className="px-4 pt-6 sm:px-6">
+      <section ref={mapSectionRef} className="px-4 pt-6 sm:px-6">
         <div className="mx-auto max-w-5xl rounded-[30px] border border-black/10 bg-[#F6FBFF] p-5 shadow-float">
           <div className="max-w-4xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-black/42">Map explorer</p>
@@ -199,6 +223,20 @@ export function HomePage({ data }: HomePageProps) {
         onClose={() => setSelectedSpotId(null)}
         onSelectRelated={setSelectedSpotId}
       />
+
+      {showFloatingMapCta ? (
+        <a
+          href={MY_MAPS_PUBLIC_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="fixed bottom-5 right-4 z-30 inline-flex items-center gap-2 rounded-full border border-[#18212B]/10 bg-[#18212B] px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_35px_rgba(24,33,43,0.24)] transition-transform duration-200 hover:-translate-y-0.5 sm:right-6 sm:px-5"
+        >
+          <span aria-hidden="true" className="text-base leading-none">
+            🗺️
+          </span>
+          <span>View on Google Maps</span>
+        </a>
+      ) : null}
     </main>
   );
 }
