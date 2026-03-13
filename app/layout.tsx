@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theoandsheila.xyz"),
-  title: "Sheila's Seoul Edit",
+  title: "Theo's Seoul Guide for Sheila — 85 Places to Love",
   description:
-    "A private Seoul guide from Theo to Sheila: soulful food, quieter hanok moments, and hidden gems that feel unmistakably Korean.",
+    "from cozy hidden gems to iconic must-visits. A love letter to the city, made by Theo.",
   applicationName: "Sheila's Seoul Edit",
   alternates: {
     canonical: "/",
@@ -16,17 +16,16 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Sheila's Seoul Edit",
-    description:
-      "Theo's private Seoul shortlist for Sheila, built around soulful meals, local atmosphere, and the quieter side of the city.",
+    title: "Theo's Seoul Guide for Sheila — 85 Places to Love",
+    description: "from cozy hidden gems to iconic must-visits. A love letter to the city, made by Theo.",
     url: "https://theoandsheila.xyz",
     siteName: "Sheila's Seoul Edit",
     images: [
       {
-        url: "/images/map/seoul-map-poster.png",
+        url: "/images/map/og-seoul-guide.png",
         width: 1200,
-        height: 800,
-        alt: "Illustrated Seoul map poster from Theo's Seoul guide for Sheila",
+        height: 630,
+        alt: "Illustrated Seoul guide map with Theo's portrait",
       },
     ],
     locale: "en_US",
@@ -34,10 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sheila's Seoul Edit",
-    description:
-      "Theo's private Seoul shortlist for Sheila, built around soulful meals, local atmosphere, and hidden gems.",
-    images: ["/images/map/seoul-map-poster.png"],
+    title: "Theo's Seoul Guide for Sheila — 85 Places to Love",
+    description: "from cozy hidden gems to iconic must-visits. A love letter to the city, made by Theo.",
+    images: ["/images/map/og-seoul-guide.png"],
   },
 };
 
