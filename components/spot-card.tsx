@@ -72,11 +72,10 @@ export function SpotCard({ spot, onSelect, index, variant = "main" }: SpotCardPr
           ))}
         </div>
 
-        <div className="mt-auto flex items-center justify-between pt-5 text-sm font-medium text-black/60">
+        <div className="mt-auto pt-5 text-sm font-medium text-black/60">
           <span>
             {spot.district} · {spot.bestTime}
           </span>
-          <span>Open details</span>
         </div>
       </div>
     </motion.button>

@@ -62,22 +62,19 @@ export function HomePage({ data }: HomePageProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.55 }}
         >
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-black/42">
-                A Seoul guide, made with Sheila in mind
-              </p>
-              <h2 className="display-font mt-2 text-4xl leading-none tracking-[-0.04em]">
-                Theo&apos;s saved the Seoul he most wants to show her
-              </h2>
-              <p className="mt-3 text-[15px] leading-7 text-black/65">
-                Not a generic city checklist, but a more affectionate shortlist for Sheila&apos;s visit from China:
-                places with warmth, beauty, good taste, and that unmistakable Korean texture. The main spots keep the
-                trip easy to plan, while the hidden gems make it feel like Theo is quietly letting her into his
-                favorite version of Seoul.
-              </p>
-            </div>
-            <div className="text-sm text-black/55">{data.mainSpots.length + data.hiddenGems.length} places collected</div>
+          <div className="max-w-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-black/42">
+              A Seoul guide, made with Sheila in mind
+            </p>
+            <h2 className="display-font mt-2 text-4xl leading-none tracking-[-0.04em]">
+              Theo saved the side of Seoul he most wants to show her
+            </h2>
+            <p className="mt-3 text-[15px] leading-7 text-black/65">
+              Not a generic city checklist, but a more affectionate shortlist for Sheila&apos;s visit from China:
+              places with warmth, beauty, good taste, and that unmistakable Korean texture. The main spots keep the
+              trip easy to plan, while the hidden gems make it feel as though Theo is quietly letting her into his own
+              favorite version of Seoul.
+            </p>
           </div>
           <ul className="mt-5 space-y-3 text-[15px] leading-7 text-black/62">
             <li>
@@ -95,18 +92,15 @@ export function HomePage({ data }: HomePageProps) {
 
       <section className="px-4 pt-6 sm:px-6">
         <div className="mx-auto max-w-5xl rounded-[30px] border border-black/10 bg-[#F6FBFF] p-5 shadow-float">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-black/42">Map explorer</p>
-              <h2 className="display-font mt-2 text-4xl leading-none tracking-[-0.04em]">
-                See where the trip clusters geographically
-              </h2>
-              <p className="mt-3 text-[15px] leading-7 text-black/65">
-                This is the fastest way to see whether a candidate is in the right part of town, whether a route can
-                stay compact, and which hidden gems can naturally slot into a neighborhood plan.
-              </p>
-            </div>
-            <div className="text-sm text-black/55">{filteredSpots.length} POIs currently mapped</div>
+          <div className="max-w-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-black/42">Map explorer</p>
+            <h2 className="display-font mt-2 text-4xl leading-none tracking-[-0.04em]">
+              See where the trip clusters geographically
+            </h2>
+            <p className="mt-3 text-[15px] leading-7 text-black/65">
+              This is the fastest way to sense whether a place sits in the right part of town, whether a route can
+              stay compact, and which hidden gems naturally belong in the same neighborhood plan.
+            </p>
           </div>
           <div className="mt-5">
             <SpotMap spots={filteredSpots} />
@@ -121,13 +115,13 @@ export function HomePage({ data }: HomePageProps) {
           <p className="mt-3 max-w-3xl text-[15px] leading-7 text-black/65">
             These eight are the ones that shift the app from “good Seoul recommendations” to “this was clearly made by
             someone local.” Private hanok dining, certified traditional confectionery, mountain views, and tea spaces
-            that do not read as tourist defaults.
+            that do not read like default tourist picks.
           </p>
         </div>
       </section>
 
       <section className="px-4 pt-5 sm:px-6">
-        <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-3">
           {data.hiddenGems.map((spot, index) => (
             <SpotCard key={spot.id} spot={spot} index={index} onSelect={setSelectedSpotId} variant="gem" />
           ))}
@@ -141,8 +135,8 @@ export function HomePage({ data }: HomePageProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-black/42">Browse the full list</p>
               <h2 className="display-font mt-2 text-4xl leading-none tracking-[-0.04em]">Filter by category and subcategory</h2>
               <p className="mt-3 text-[15px] leading-7 text-black/65">
-                The list is large enough now that food type matters more than a single long feed. Use category first,
-                then narrow with subcategory when you want to compare similar kinds of places quickly.
+                The shortlist is big enough now that food type matters more than one long feed. Use category first,
+                then narrow by subcategory when you want to compare similar places more quickly.
               </p>
             </div>
             <div className="text-sm text-black/55">{filteredSpots.length} spots visible</div>
@@ -196,29 +190,6 @@ export function HomePage({ data }: HomePageProps) {
               variant={spot.hiddenGem ? "gem" : "main"}
             />
           ))}
-        </div>
-      </section>
-
-      <section className="px-4 pt-6 sm:px-6">
-        <div className="mx-auto grid max-w-5xl gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-[30px] border border-black/10 bg-[#18212B] p-6 text-[#FFF9F4] shadow-float">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/55">
-              How the recommendation layer works now
-            </p>
-            <p className="mt-3 text-xl leading-8 text-white/90">
-              Related spots are now derived from real location context: same neighborhood first, then same district,
-              then same category, with hidden gems pushed upward when they fit. That keeps the recommendations local
-              without needing a manually curated graph for all 65 entries.
-            </p>
-          </div>
-          <div className="rounded-[30px] border border-black/10 bg-[#F4FFF7] p-6 shadow-float">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-black/42">Current data shape</p>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-black/65">
-              <li>CSV now lives in-repo and is parsed into typed content at runtime.</li>
-              <li>Cards and detail sheets are photo-ready and will auto-pick local files when they exist.</li>
-              <li>Hidden gems are separated as their own editorial layer instead of being buried in the main feed.</li>
-            </ul>
-          </div>
         </div>
       </section>
 

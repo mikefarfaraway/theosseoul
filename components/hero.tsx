@@ -23,8 +23,8 @@ export function Hero({ profile }: HeroProps) {
             <span className="rounded-full bg-[#C3F4D6]/70 px-3 py-1">Mobile first</span>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] md:items-center">
-            <div className="space-y-5">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-stretch">
+            <div className="space-y-5 lg:pr-4">
               <div className="space-y-3">
                 <p className="text-sm font-medium text-black/55">{profile.subtitle}</p>
                 <h1 className="display-font text-5xl leading-none tracking-[-0.04em] text-ink sm:text-6xl">
@@ -34,7 +34,7 @@ export function Hero({ profile }: HeroProps) {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[24px] border border-black/10 bg-white/70 p-4">
+                <div className="rounded-[24px] border border-black/10 bg-white/70 p-4 lg:min-h-[232px]">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <p className="text-xs uppercase tracking-[0.24em] text-black/45">{profile.guest.role}</p>
@@ -54,7 +54,7 @@ export function Hero({ profile }: HeroProps) {
                   </div>
                   <p className="mt-3 text-sm leading-6 text-black/65">{profile.guest.shortBio}</p>
                 </div>
-                <div className="rounded-[24px] border border-black/10 bg-[#FFF1E8]/80 p-4">
+                <div className="rounded-[24px] border border-black/10 bg-[#FFF1E8]/80 p-4 lg:min-h-[232px]">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <p className="text-xs uppercase tracking-[0.24em] text-black/45">{profile.curator.role}</p>
@@ -77,12 +77,12 @@ export function Hero({ profile }: HeroProps) {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative lg:h-full">
               <div className="absolute inset-x-6 top-6 h-20 rounded-full bg-[#FFD8C7] blur-3xl" />
-              <div className="relative min-h-[340px] rounded-[28px] bg-confetti-glow p-3">
-                <div className="rounded-[24px] border border-black/10 bg-white/80 p-5">
+              <div className="relative min-h-[340px] rounded-[28px] bg-confetti-glow p-3 lg:h-full">
+                <div className="rounded-[24px] border border-black/10 bg-white/80 p-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
                   <p className="text-xs uppercase tracking-[0.22em] text-black/45">What this guide optimizes for</p>
-                  <ul className="mt-3 space-y-2 text-sm leading-6 text-black/70">
+                  <ul className="mt-3 space-y-3 text-sm leading-7 text-black/70 lg:text-[15px]">
                     <li>Places that feel recognizably Korean, not copy-paste tourist picks</li>
                     <li>A better first Seoul trip for a Chinese visitor who cares about taste and atmosphere</li>
                     <li>Enough hidden gems that the whole guide feels personally collected by Theo</li>
